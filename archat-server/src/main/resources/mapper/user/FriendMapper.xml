@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.senjay.archat.common.user.mapper.FriendMapper">
+
+	<!-- 字段映射 -->
+	<resultMap id="FriendApplyRespMap" type="com.senjay.archat.common.user.domain.vo.response.FriendApplyResp">
+		<id property="id" column="id"/>
+		<result property="friendId" column="friend_id"/>
+		<result property="username" column="username"/>
+		<result property="avatar" column="avatar"/>
+		<result property="exep" column="exep"/>
+		<result property="createTime" column="create_time"/>
+		<result property="applyStatus" column="status"/> <!-- f.status -->
+		<result property="userStatus" column="user_status"/> <!-- u.status AS user_status -->
+	</resultMap>
+
+	<!-- SQL 查询 -->
+	<select id="listApply" resultMap="FriendApplyRespMap">
+		SELECT
+		f.id,
+		f.friend_id,
+		u.username,
+		u.avatar,
+		u.exep,
+		f.create_time,
+		f.status AS status,           -- applyStatus
+		u.status AS user_status       -- userStatus
+		FROM friends f
+		JOIN users u ON f.friend_id = u.id
+		WHERE f.user_id = #{uid} AND f.status != 1
+		ORDER BY f.create_time DESC
+	</select>
+
+	<!-- 字段映射 -->
+	<resultMap id="FriendReceiveRespMap" type="com.senjay.archat.common.user.domain.vo.response.FriendApplyResp">
+		<id property="id" column="id"/>
+		<result property="friendId" column="user_id"/>
+		<result property="username" column="username"/>
+		<result property="avatar" column="avatar"/>
+		<result property="exep" column="exep"/>
+		<result property="createTime" column="create_time"/>
+		<result property="userStatus" column="user_status"/>
+	</resultMap>
+
+	<select id="listReceive" resultMap="FriendReceiveRespMap">
+		SELECT
+		f.id,
+		f.user_id,
+		u.username,
+		u.avatar,
+		u.exep,
+		f.create_time,
+		u.status AS user_status       -- userStatus
+		FROM friends f
+		JOIN users u ON f.user_id = u.id
+		WHERE f.status = 0 AND f.friend_id = #{uid}
+		ORDER BY f.create_time DESC
+
+	</select>
+
+</mapper>

@@ -1,0 +1,72 @@
+package com.senjay.archat.common.chat.domain.entity;
+
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import java.time.LocalDateTime;
+
+/**
+ * <p>
+ * 单聊房间表
+ * </p>
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@TableName("room_friend")
+@Builder
+//不需要构造函数
+public class RoomFriend {
+
+
+
+    @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
+
+    /**
+     * 房间id
+     */
+    @TableField("room_id")
+    private Long roomId;
+
+    /**
+     * uid1（更小的uid）
+     */
+    @TableField("uid1")
+    private Long uid1;
+
+    /**
+     * uid2（更大的uid）
+     */
+    @TableField("uid2")
+    private Long uid2;
+
+    /**
+     * 房间key由两个uid拼接，先做排序uid1_uid2
+     */
+    @TableField("room_key")
+    private String roomKey;
+
+    /**
+     * 房间状态 0正常 1禁用(删好友了禁用)
+     */
+    @TableField("status")
+    private Integer status;
+
+    /**
+     * 创建时间
+     */
+    @TableField("create_time")
+    private LocalDateTime createTime;
+
+    /**
+     * 修改时间
+     */
+    @TableField("update_time")
+    private LocalDateTime  updateTime;
+
+}

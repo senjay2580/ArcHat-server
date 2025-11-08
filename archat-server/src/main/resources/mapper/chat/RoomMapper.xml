@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.senjay.archat.common.chat.mapper.RoomMapper">
+	<!--    命名空间 肯定要和接口绑定映射-->
+	<!--在映射文件里书写sql语句-->
+	<resultMap id="GroupMemberSimpleMap" type="com.senjay.archat.common.chat.domain.vo.response.group.GroupMemberSimpleResp">
+		<result column="uid" property="uid"/>
+		<result column="username" property="username"/>
+		<result column="avatar" property="avatar"/>
+		<result column="role" property="role"/>
+		<result column="status" property="status"/>
+		<result column="create_time" property="joinGroupTime"/>
+	</resultMap>
+	<select id="getGroupMember" resultMap="GroupMemberSimpleMap">
+		select gm.uid, u.username, u.avatar, gm. role, u. status, u.exep, gm.create_time from group_member gm join users u on gm.uid = u.id where gm.group_id = #{roomId}
+		order by gm. role, u.status desc
+	</select>
+
+	<select id="listJoinApply" resultType="com.senjay.archat.common.chat.domain.vo.response.group.GroupApplyResp">
+		SELECT
+		ga. id,
+		ga.uid,
+		u.username,
+		u.avatar,
+		ga.msg,
+		ga.update_time,
+		rg.room_id,
+		rg.name,
+		ga.status
+		FROM group_apply ga
+		JOIN users u ON ga.uid = u.id
+		JOIN room_group rg ON ga.room_id = rg.room_id
+		WHERE rg.delete_status = 0 and ga.room_id IN (
+		SELECT group_id
+		FROM group_member
+		WHERE uid = #{uid} AND role = 1
+		ORDER BY ga. status,
+		update_time   desc
+		)
+	</select>
+	<select id="listMyApply" resultType="com.senjay.archat.common.chat.domain.vo.response.group.MyApplyResp">
+<!--		select ga.id, ga.room_id, rg.name, ga.msg, ga.update_time from room_group rg left join group_apply ga on-->
+<!--		rg.room_id = ga.room_id where ga.uid =#{uid} order by ga.update_time desc-->
+<!--	加索引可以优化
+主表（又称驱动表、外层表）指的是在 JOIN 中，谁先被扫描、谁先被处理、谁的数据先被过滤。 修改为-->
+		select ga. id, ga.room_id, rg.name, ga.msg, ga.status, rg.avatar, ga.update_time from group_apply ga  left join room_group rg on
+		rg.room_id = ga.room_id where ga.uid =#{uid} and rg.delete_status = 0 order by ga.update_time desc
+	</select>
+
+	<select id="searchGroup" resultType="com.senjay.archat.common.chat.domain.vo.response.group.GroupDetailResp">
+		SELECT
+		room_id,
+		name,
+		avatar,
+		group_desc,
+		create_time
+		FROM
+		room_group
+		WHERE
+		name LIKE CONCAT('%', #{keyword}, '%')
+		ORDER BY
+		create_time DESC
+	</select>
+
+
+</mapper>

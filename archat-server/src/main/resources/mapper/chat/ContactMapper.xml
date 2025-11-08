@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.senjay.archat.common.chat.mapper.ContactMapper">
+
+	<resultMap id="PrivateContactRespMap" type="com.senjay.archat.common.chat.domain.vo.response.PrivateContactResp">
+		<id property="id" column="id"/>
+		<result property="friendId" column="friend_id"/>
+		<result property="activeTime" column="active_time"/>
+		<result property="lastMsgId" column="last_mag_id"/>
+		<result property="readTime" column="read_time"/>
+		<result property="roomId" column="room_id"/>
+	</resultMap>
+	<insert id="refreshOrCreateActiveTime">
+		insert into contact(`room_id`,`uid`,`last_msg_id`,`active_time`)
+		values
+		<foreach collection="memberUidList" item="uid" separator=",">
+			(#{roomId},#{uid},#{msgId},#{activeTime})
+		</foreach>
+		on DUPLICATE KEY UPDATE
+		`last_msg_id`=VALUES(last_msg_id),
+		`active_time`=VALUES(active_time)
+	</insert>
+
+	<!--TODO:多表联查消耗性能有什么替代方案或者优化方案嘛？ -->
+	<select id="listPrivate" resultMap="PrivateContactRespMap">
+		SELECT c.id,c.room_id,
+		CASE
+		WHEN #{uid} = rf.uid1 THEN rf.uid2
+		WHEN #{uid} = rf.uid2 THEN rf.uid1
+		END AS friend_id,
+		c.active_time,
+		c.last_msg_id,
+		c.read_time
+		FROM contact c
+		JOIN room_friend rf ON rf.room_id = c.room_id
+		WHERE c.uid = #{uid} AND rf.status = 0
+		ORDER BY c.active_time desc
+	</select>
+	<select id="listGroup" resultType="com.senjay.archat.common.chat.domain.vo.response.group.GroupQueryResp">
+		select c.id, rg.room_id, rg.name, rg. avatar, c.active_time, c.last_msg_id from room_group rg join contact c on  rg.room_id = c.room_id
+		join group_member gm on gm.group_id = rg.room_id
+		where rg.delete_status = 0 and c.uid = #{uid} and gm.uid = #{uid}
+		order by c.active_time desc
+	</select>
+
+	<resultMap id="UnreadMsgCntMap" type="com.senjay.archat.common.chat.domain.vo.response.UnreadMsgCntResp">
+		<result column="id" property="contactId"/>
+		<result column="count" property="count"/>
+	</resultMap>
+
+	<select id="getUnreadMsgCnt"
+	        resultMap="UnreadMsgCntMap">
+		SELECT c.id, COUNT(c.id) AS count
+		FROM contact c
+		LEFT JOIN message m ON c.room_id = m.room_id
+		WHERE m.from_uid != #{uid}
+		AND c.uid = #{uid}
+		AND c.read_time &lt; m.update_time GROUP BY c.id
+	</select>
+
+
+
+</mapper>

@@ -1,0 +1,6 @@
+doc/
+docs/
+*.md
+README*
+CHANGELOG*
+LICENSE*

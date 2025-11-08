@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.senjay.archat.common.chat.mapper.MessageMapper">
+	<!--    命名空间 肯定要和接口绑定映射-->
+	<!--在映射文件里书写sql语句-->
+
+	<select id="listMessage" resultType="com.senjay.archat.common.chat.domain.vo.response.MessageResp">
+		SELECT
+		id,
+		from_uid,
+		content,
+		status,
+		type,
+		create_time,
+		update_time
+		FROM
+		message
+		WHERE
+		room_id = #{roomId}
+		AND status = 0
+		ORDER BY
+		create_time ASC
+	</select>
+
+</mapper>

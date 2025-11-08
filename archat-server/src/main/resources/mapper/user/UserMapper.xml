@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.senjay.archat.common.user.mapper.UserMapper">
+	<!--    命名空间 肯定要和接口绑定映射-->
+	<!--在映射文件里书写sql语句-->
+<!--	<resultMap id="FriendSearchRespMap" type="com.senjay.archat.common.user.domain.vo.response.FriendSearchResp">-->
+<!--		<result column="username" property="username"/>-->
+<!--		<result column="avatar" property="avatar"/>-->
+<!--		<result column="exep" property="exep"/>-->
+<!--		<result column="create_time" property="createTime"/>-->
+<!--		<result column="status" property="status"/>-->
+<!--	</resultMap>-->
+	<select id="searchFriend" resultType="com.senjay.archat.common.user.domain.vo.response.FriendSearchResp">
+		SELECT id,username, avatar, exep, create_time, status
+		FROM users
+		WHERE username LIKE CONCAT('%', #{keyword}, '%')
+		ORDER BY create_time DESC
+	</select>
+	<select id="listFriends" resultType="com.senjay.archat.common.user.domain.vo.response.FriendSearchResp">
+		SELECT id, username, avatar, exep,create_time, status
+		FROM users
+		WHERE id IN
+		<foreach collection="friendIds" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</select>
+
+</mapper>

@@ -1,0 +1,125 @@
+# ========================================
+# ArcChat 配置文件模板
+# ========================================
+# 使用说明：
+# 1. 复制本文件为 application.yml
+# 2. 将所有 <YOUR_XXX> 替换为实际值
+# 3. 确保 application.yml 已添加到 .gitignore
+# 4. 不要将实际的 application.yml 提交到版本控制
+# ========================================
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/archat?useUnicode=true&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: <YOUR_DB_PASSWORD>  # ⚠️ 替换为数据库密码，如: 123456
+  
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      # password: <YOUR_REDIS_PASSWORD>  # 如有密码请取消注释并填写
+  
+  rabbitmq:
+    host: localhost
+    port: 5672
+    virtual-host:
+    username: <YOUR_RABBITMQ_USERNAME>  # ⚠️ 替换为RabbitMQ用户名
+    password: <YOUR_RABBITMQ_PASSWORD>  # ⚠️ 替换为RabbitMQ密码
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    org.springframework.web: INFO
+#    dev.langchain4j: debug
+#  | 日志级别    | 是否默认打印 |
+#  | ------- | ------ |
+#  | `ERROR` | ✅ 是    |
+#  | `WARN`  | ✅ 是    |
+#  | `INFO`  | ✅ 是    |
+#  | `DEBUG` | ❌ 否    |
+#  | `TRACE` | ❌ 否    |
+
+knife4j:
+  enable: false
+  openapi:
+    title: archat接口文档
+    description: "archat接口文档"
+    email: 3381335358@qq.com
+    concat: senjay
+    url: https://www.archat.top
+    version: v1.0.0
+    group:
+      default:
+        group-name: default
+        api-rule: package
+        api-rule-resources:
+          - com.senjay.archat.admin.chat.controller
+          - com.senjay.archat.admin.user.controller
+          - com.senjay.archat.client.user.controller
+          - com.senjay.archat.client.chat.controller
+
+archat:
+  jwt:
+    admin-secret-key: <YOUR_ADMIN_JWT_SECRET>  # ⚠️ 替换为管理端JWT密钥（建议64位随机字符串）
+    admin-ttl: 43200000  # 12小时
+    admin-token-name: Authentication
+    
+    client-secret-key: <YOUR_CLIENT_JWT_SECRET>  # ⚠️ 替换为客户端JWT密钥（建议64位随机字符串）
+    client-ttl: 7200000  # 2小时
+    client-token-name: Authentication
+  
+  alioss:
+    access-key-id: <YOUR_OSS_ACCESS_KEY>      # ⚠️ 替换为阿里云OSS AccessKey
+    access-key-secret: <YOUR_OSS_SECRET>      # ⚠️ 替换为阿里云OSS Secret
+    bucket-name: archat
+    endpoint: oss-cn-hangzhou.aliyuncs.com
+
+langchain4j:
+  community:
+    redis:
+      host: localhost
+      port: 6379
+  
+  open-ai:
+    # 向量模型配置
+    embedding-model:
+      base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
+      api-key: <YOUR_AI_API_KEY>  # ⚠️ 替换为通义千问API Key
+      model-name: text-embedding-v4
+      log-requests: true
+      log-responses: true
+      max-segments-per-batch: 10
+    
+    # 流式聊天模型配置
+    streaming-chat-model:
+      base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
+      api-key: <YOUR_AI_API_KEY>  # ⚠️ 替换为通义千问API Key
+      model-name: qwen-plus
+      log-requests: true
+      log-responses: true
+    
+    # 聊天模型配置
+    chat-model:
+      base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
+      api-key: <YOUR_AI_API_KEY>  # ⚠️ 替换为通义千问API Key
+      model-name: qwen-plus
+      log-requests: true
+      log-responses: true
+
+# ========================================
+# 配置说明
+# ========================================
+# 1. 数据库配置：确保MySQL已安装并创建archat数据库
+# 2. Redis配置：确保Redis服务已启动
+# 3. RabbitMQ配置：确保RabbitMQ服务已启动
+# 4. JWT密钥：建议使用强随机字符串，可通过在线工具生成
+# 5. 阿里云OSS：需要在阿里云创建OSS Bucket并获取密钥
+# 6. 通义千问API：需要在阿里云AI平台申请API Key
+# ========================================
