@@ -18,32 +18,188 @@
     text-align: center;
   ">ArcHat</h1>
 </div>
-
 <div align="center">
-  <img src="https://img.shields.io/badge/Spring_Boot-3.5.0-brightgreen?logo=springboot&logoColor=white">
-  <img src="https://img.shields.io/badge/Netty-4.1.76-343434?logo=apache&logoColor=white">
-  <img src="https://img.shields.io/badge/MyBatis_Plus-3.5.7-00A1E9">
-  <img src="https://img.shields.io/badge/RabbitMQ-Latest-FF6600?logo=rabbitmq&logoColor=white">
-  <img src="https://img.shields.io/badge/Redis-Latest-DC382D?logo=redis&logoColor=white">
+  <img src="https://img.shields.io/badge/spring-boot3-brightgreen?logo=spring">
+  <img src="https://img.shields.io/badge/netty-gren
+">
+  <img src="https://img.shields.io/badge/MyBatis--Plus-00A1E9?logo=mybatis&logoColor=white">
+  <img src="https://img.shields.io/badge/RabbitMQ-FF6600?logo=rabbitmq&logoColor=white">
+  <img src="https://img.shields.io/badge/Redis-DC382D?logo=redis&logoColor=white">
   <br/>
-  <img src="https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql&logoColor=white">
-  <img src="https://img.shields.io/badge/WebSocket-Enabled-010101?logo=socketdotio&logoColor=white">
+  <img src="https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white">
   <img src="https://img.shields.io/badge/Java-17-ED8B00?logo=openjdk&logoColor=white">
-  <img src="https://img.shields.io/badge/Maven-Latest-C71A36?logo=apachemaven&logoColor=white">
-  <img src="https://img.shields.io/badge/LangChain4j-1.0.1-9cf?logo=chainlink&logoColor=white">
+  <img src="https://img.shields.io/badge/Maven-C71A36?logo=apachemaven&logoColor=white">
+  <img src="https://img.shields.io/badge/LangChain4j-1.0.1-9cf?logoColor=white">
 </div>
 
 <p align="center">
-  📧 联系方式: <img src="https://img.shields.io/badge/Email-3381335358@qq.com-blue?logo=gmail&logoColor=white">
+  github：<a href="https://github.com/senjay2580/ArcHat-server/stargazers"><img src="https://img.shields.io/github/stars/senjay2580/ArcHat-server?style=social" alt="star"></a>
 </p>
 
 ---
-
 ## 📖 项目介绍
 
 **ArcChat** 是一款基于 **Spring Boot 3**、**Netty**、**MyBatis-Plus**、**RabbitMQ** 和 **LangChain4j** 构建 一款仿飞书的企业级通讯与协作平台，集私聊、群聊与安全权限管理于一体，支持接口多维限流、敏感词过滤、会话管理、消息实时推送、语音通话、文档协作以及智能 AI 助手，旨在提升团队沟通效率与协作体验。
 
-### ✨核心亮点
+
+---
+
+## 🖼️ 项目预览
+
+### 🏠 登录注册 & 主页
+
+<div align="center">
+  <table>
+    <tr>
+      <td width="50%">
+        <img src="https://raw.githubusercontent.com/senjay2580/ArcHat/main/preview/Login^register.png" alt="登录注册" />
+        <p align="center"><b>登录注册界面</b></p>
+      </td>
+      <td width="50%">
+        <img src="https://raw.githubusercontent.com/senjay2580/ArcHat/main/preview/home.png" alt="主页" />
+        <p align="center"><b>主页（日间模式）</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%">
+        <img src="https://raw.githubusercontent.com/senjay2580/ArcHat/main/preview/home-night.png" alt="主页-夜间" />
+        <p align="center"><b>主页（夜间模式）</b></p>
+      </td>
+      <td width="50%">
+        <img src="https://raw.githubusercontent.com/senjay2580/ArcHat/main/preview/search.png" alt="搜索功能" />
+        <p align="center"><b>好友/群聊全局搜索</b></p>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+### 💬 聊天功能
+
+<div align="center">
+  <table>
+    <tr>
+      <td width="50%">
+        <img src="https://raw.githubusercontent.com/senjay2580/ArcHat/main/preview/chat.png" alt="私聊" />
+        <p align="center"><b>私聊界面</b></p>
+      </td>
+      <td width="50%">
+        <img src="https://raw.githubusercontent.com/senjay2580/ArcHat/main/preview/groupchat1.png" alt="群聊" />
+        <p align="center"><b>群聊界面</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%">
+        <img src="https://raw.githubusercontent.com/senjay2580/ArcHat/main/preview/groupchat2.png" alt="群聊消息" />
+        <p align="center"><b>群聊信息</b></p>
+      </td>
+      <td width="50%">
+        <img src="https://raw.githubusercontent.com/senjay2580/ArcHat/main/preview/groupManage.png" alt="群组管理" />
+        <p align="center"><b>群聊管理</b></p>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+### 🤖 AI 智能助手
+
+<div align="center">
+  <table>
+    <tr>
+      <td width="33.3%">
+        <img src="https://raw.githubusercontent.com/senjay2580/ArcHat/main/preview/AiWelcome.png" alt="AI欢迎界面" />
+        <p align="center"><b>AI 欢迎界面</b></p>
+      </td>
+      <td width="33.3%">
+        <img src="https://raw.githubusercontent.com/senjay2580/ArcHat/main/preview/Aichat1.png" alt="AI聊天1" />
+        <p align="center"><b>AI 对话界面(一)</b></p>
+      </td>
+      <td width="33.3%">
+        <img src="https://raw.githubusercontent.com/senjay2580/ArcHat/main/preview/Aichat2.png" alt="AI聊天2" />
+        <p align="center"><b>AI 对话界面（二）</b></p>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+### 📞 音视频通话
+
+<div align="center">
+  <table>
+    <tr>
+      <td width="33.3%">
+        <img src="https://raw.githubusercontent.com/senjay2580/ArcHat/main/preview/audio_call.png" alt="语音通话" />
+        <p align="center"><b>语音通话待机</b></p>
+      </td>
+      <td width="33.3%">
+        <img src="https://raw.githubusercontent.com/senjay2580/ArcHat/main/preview/video_call1.png" alt="视频通话1" />
+        <p align="center"><b>视频通话待机</b></p>
+      </td>
+      <td width="33.3%">
+        <img src="https://raw.githubusercontent.com/senjay2580/ArcHat/main/preview/video_call2.png" alt="视频通话2" />
+        <p align="center"><b>视频通话界面</b></p>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+### 👤 用户中心 & 效率工具
+
+<div align="center">
+  <table>
+    <tr>
+      <td width="33.3%">
+        <img src="https://raw.githubusercontent.com/senjay2580/ArcHat/main/preview/userHub.png" alt="用户中心" />
+        <p align="center"><b>用户中心</b></p>
+      </td>
+      <td width="33.3%">
+        <img src="https://raw.githubusercontent.com/senjay2580/ArcHat/main/preview/mail.png" alt="邮箱" />
+        <p align="center"><b>消息中心</b></p>
+      </td>
+      <td width="33.3%">
+        <img src="https://raw.githubusercontent.com/senjay2580/ArcHat/main/preview/todo.png" alt="待办事项" />
+        <p align="center"><b>数据统计和其他功能</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td width="33.3%">
+        <img src="https://raw.githubusercontent.com/senjay2580/ArcHat/main/preview/TodoList.png" alt="待办列表" />
+        <p align="center"><b>待办列表详情</b></p>
+      </td>
+      <td width="33.3%">
+        <img src="https://raw.githubusercontent.com/senjay2580/ArcHat/main/preview/note1.png" alt="笔记" />
+        <p align="center"><b>笔记编辑器</b></p>
+      </td>
+      <td width="33.3%">
+        <img src="https://raw.githubusercontent.com/senjay2580/ArcHat/main/preview/note2.png" alt="笔记列表" />
+        <p align="center"><b>笔记管理</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3" align="center">
+        <img src="https://raw.githubusercontent.com/senjay2580/ArcHat/main/preview/note3.png" alt="笔记富文本" style="max-width: 66%;" />
+        <p align="center"><b>富文本笔记编辑</b></p>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+---
+
+## ✨核心亮点
 
 ### 💬 即时通讯能力
 
@@ -102,9 +258,7 @@
 
 ---
 
-## 🚧 开发路线图 (TODO)
-
-### 🔥 正在开发中
+## 🔥 正在开发中
 - 🤖 **RAG 增强检索**
   - [ ] 多个AI模型集成
   - [ ] AI 会话管理
@@ -227,20 +381,6 @@
 
 ---
 
-## 🚀 快速开始
-
-### 环境依赖
-
-在开始之前，请确保已安装以下环境：
-
-| 环境 | 版本要求 | 说明 |
-|------|----------|------|
-| JDK | 17+ | 必须使用 Java 17 或更高版本 |
-| Maven | 3.6+ | 项目构建工具 |
-| MySQL | 8.0+ | 数据库 |
-| Redis | 6.0+ | 缓存和向量存储 |
-| RabbitMQ | 3.9+ | 消息队列 |
-
 ### 安装部署（3 步启动）
 
 #### 1️⃣ 克隆项目
@@ -306,60 +446,3 @@ java -jar target/archat-server-1.0-SNAPSHOT.jar
 - 后端服务：http://localhost:8080
 - API 文档：http://localhost:8080/doc.html（需开启 knife4j）
 - **WebSocket：ws://localhost:8090**
-
----
-
-
-
-## ❓ 常见问题（FAQ）
-
-### Q1：启动时报错 `jwt secret key is null`
-**A**：请检查 `application.yml` 中的 `archat.jwt.admin-secret-key` 和 `client-secret-key` 是否已配置。
-
-### Q2：WebSocket 连接失败
-**A**：
-1. 确认 Netty 服务已启动（日志中会显示 `Netty WebSocket Server started on port 8090`）
-2. 检查防火墙是否开放 8090 端口
-3. 确认 Token 是否有效（可通过 `/client/user/login` 重新获取）
-
-### Q3：AI 聊天无响应
-**A**：
-
-1. 检查 `langchain4j.open-ai.api-key` 是否配置正确
-2. 确认通义千问 API 额度是否充足
-3. 查看日志中是否有 AI 服务调用错误
-
-### Q4：如何扩展新的消息类型？
-**A**：
-
-1. 在 `MessageTypeEnum` 中添加新类型
-2. 实现对应的消息处理器（继承 `AbstractMsgHandler`）
-3. 在 `MsgHandlerFactory` 中注册新处理器
-
-### Q5：如何部署到生产环境？(docker)
-**A**：推荐使用 Docker 部署：
-
-#### 1️⃣ 克隆项目
-```bash
-git clone https://github.com/yourusername/archat.git
-cd archat
-```
-
-#### 2️⃣ 构建并启动所有服务
-```bash
-# 一键启动所有服务（自动构建镜像）
-docker-compose up -d
-
-# 查看服务状态
-docker-compose ps
-
-# 实时查看所有服务日志
-docker-compose logs -f
-```
-
-#### 3️⃣ 初始化数据库
-```bash
-# 导入数据库结构和初始数据
-docker exec -i mysql mysql -uroot -proot archat < ./ARCHAT/sql/archat.sql
-```
-

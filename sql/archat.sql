@@ -164,7 +164,7 @@ CREATE TABLE `users`  (
   `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `status` tinyint NULL DEFAULT 0 COMMENT '在线/离线',
   `create_time` datetime NULL DEFAULT CURRENT_TIMESTAMP,
-  `exep` int NULL DEFAULT 0,
+  `exp` int NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `username`(`username` ASC) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;

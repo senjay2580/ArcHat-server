@@ -11,6 +11,7 @@ import com.senjay.archat.common.exception.RoomException;
 import com.senjay.archat.common.exception.errorEnums.RoomErrorEnum;
 import com.senjay.archat.common.user.dao.UserDao;
 import com.senjay.archat.common.util.UserHolder;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,7 @@ import org.springframework.stereotype.Service;
  * @since 1.0.0
  */
 @Service
+@Slf4j
 public class MemberOperator extends AbstractGroupOperator {
     @Autowired
     private GroupMemberDao groupMemberDao;

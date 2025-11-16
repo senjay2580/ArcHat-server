@@ -28,5 +28,5 @@ public class UserEditFormDTO {
     private String avatar;
 
     @Min(value=0)
-    private Integer exep;
+    private Integer exp;
 }

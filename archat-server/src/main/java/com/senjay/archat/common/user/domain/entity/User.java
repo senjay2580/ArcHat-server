@@ -33,6 +33,6 @@ public class User {
     @TableField("create_time")
     private LocalDateTime createTime;
     
-    @TableField("exep")
-    private Integer exep;
+    @TableField("exp")
+    private Integer exp;
 }

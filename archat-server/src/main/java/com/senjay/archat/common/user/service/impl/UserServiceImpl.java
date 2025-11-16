@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService {
                 .uid(user.getId())
                 .username(user.getUsername())
                 .avatar(user.getAvatar())
-                .exep(user.getExep())
+                .exp(user.getExp())
                 .createTime(user.getCreateTime())
                 .token(token)
                 .build();

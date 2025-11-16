@@ -10,7 +10,7 @@
 		<result property="friendId" column="friend_id"/>
 		<result property="username" column="username"/>
 		<result property="avatar" column="avatar"/>
-		<result property="exep" column="exep"/>
+		<result property="exp" column="exp"/>
 		<result property="createTime" column="create_time"/>
 		<result property="applyStatus" column="status"/> <!-- f.status -->
 		<result property="userStatus" column="user_status"/> <!-- u.status AS user_status -->
@@ -23,7 +23,7 @@
 		f.friend_id,
 		u.username,
 		u.avatar,
-		u.exep,
+		u.exp,
 		f.create_time,
 		f.status AS status,           -- applyStatus
 		u.status AS user_status       -- userStatus
@@ -39,7 +39,7 @@
 		<result property="friendId" column="user_id"/>
 		<result property="username" column="username"/>
 		<result property="avatar" column="avatar"/>
-		<result property="exep" column="exep"/>
+		<result property="exp" column="exp"/>
 		<result property="createTime" column="create_time"/>
 		<result property="userStatus" column="user_status"/>
 	</resultMap>
@@ -50,7 +50,7 @@
 		f.user_id,
 		u.username,
 		u.avatar,
-		u.exep,
+		u.exp,
 		f.create_time,
 		u.status AS user_status       -- userStatus
 		FROM friends f

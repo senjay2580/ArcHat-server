@@ -11,7 +11,7 @@ public class FriendSearchResp {
     private Long id;
     private String username;
     private String avatar;
-    private Integer exep;
+    private Integer exp;
     private LocalDateTime createTime;
     private Boolean status;
 

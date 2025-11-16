@@ -16,7 +16,7 @@ public class GroupMemberSimpleResp {
     // 1=管理员，2=群主
     private Integer role;
     private Integer status;
-    private String exep;
+    private String exp;
 //    updateTime group_member
     private LocalDateTime joinGroupTime;
 }

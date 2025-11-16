@@ -16,7 +16,7 @@ public class FriendApplyResp {
     private Long friendId;
     private String username;
     private String avatar;
-    private Integer exep;
+    private Integer exp;
     private LocalDateTime createTime;
     // 申请情况
     private Integer applyStatus;

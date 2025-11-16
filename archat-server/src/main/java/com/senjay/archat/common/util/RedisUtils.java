@@ -25,15 +25,14 @@ public class RedisUtils {
         RedisUtils.stringRedisTemplate = SpringUtil.getBean(StringRedisTemplate.class);
     }
 
-    private static final String LUA_INCR_EXPIRE = """
-            local key,ttl=KEYS[1],ARGV[1]
-            if redis.call('EXISTS',key)==0 then
-              redis.call('SETEX',key,ttl,1)
-              return 1
-            else
-              return tonumber(redis.call('INCR',key))
-            end
-            """;
+    private static final String LUA_INCR_EXPIRE = 
+            "local key,ttl=KEYS[1],ARGV[1]\n" +
+            "if redis.call('EXISTS',key)==0 then\n" +
+            "  redis.call('SETEX',key,ttl,1)\n" +
+            "  return 1\n" +
+            "else\n" +
+            "  return tonumber(redis.call('INCR',key))\n" +
+            "end";
 
 
     /**
@@ -283,11 +282,11 @@ public class RedisUtils {
     }
 
     static <T> T toBeanOrNull(String json, Class<T> tClass) {
-        return json == null ? null : JsonUtils.toObj(json, tClass);
+        return json == null ? null : JsonUtils.toObject(json, tClass);
     }
 
     public static String objToStr(Object o) {
-        return JsonUtils.toStr(o);
+        return JsonUtils.toString(o);
     }
 
     public static <T> void mset(Map<String, T> map, long time) {

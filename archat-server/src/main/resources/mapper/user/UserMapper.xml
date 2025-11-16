@@ -8,18 +8,18 @@
 <!--	<resultMap id="FriendSearchRespMap" type="com.senjay.archat.common.user.domain.vo.response.FriendSearchResp">-->
 <!--		<result column="username" property="username"/>-->
 <!--		<result column="avatar" property="avatar"/>-->
-<!--		<result column="exep" property="exep"/>-->
+<!--		<result column="exp" property="exp"/>-->
 <!--		<result column="create_time" property="createTime"/>-->
 <!--		<result column="status" property="status"/>-->
 <!--	</resultMap>-->
 	<select id="searchFriend" resultType="com.senjay.archat.common.user.domain.vo.response.FriendSearchResp">
-		SELECT id,username, avatar, exep, create_time, status
+		SELECT id,username, avatar, exp, create_time, status
 		FROM users
 		WHERE username LIKE CONCAT('%', #{keyword}, '%')
 		ORDER BY create_time DESC
 	</select>
 	<select id="listFriends" resultType="com.senjay.archat.common.user.domain.vo.response.FriendSearchResp">
-		SELECT id, username, avatar, exep,create_time, status
+		SELECT id, username, avatar, exp,create_time, status
 		FROM users
 		WHERE id IN
 		<foreach collection="friendIds" item="id" open="(" separator="," close=")">

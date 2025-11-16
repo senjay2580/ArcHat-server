@@ -15,16 +15,16 @@ import java.util.List;
 public class UserDao extends ServiceImpl<UserMapper, User> {
     public Page<User> getBySearch(UserSearchDTO userSearchDTO) {
         String keyword = userSearchDTO.getKeyword();
-        Integer exepMin = userSearchDTO.getExepMin();
-        Integer exepMax = userSearchDTO.getExepMax();
+        Integer expMin = userSearchDTO.getExpMin();
+        Integer expMax = userSearchDTO.getExpMax();
         Integer page = userSearchDTO.getPage();
         Integer pageSize = userSearchDTO.getPageSize();
 
         Page<User> pages = new Page<>(page,pageSize);
         LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<>();
         wrapper.like(keyword != null,User::getUsername, keyword)
-                .ge(exepMin != null,User::getExep,exepMin)
-                .le(exepMax != null,User::getExep,exepMax);
+                .ge(expMin != null,User::getExp,expMin)
+                .le(expMax != null,User::getExp,expMax);
         return this.page(pages,wrapper);
 
 
@@ -34,7 +34,7 @@ public class UserDao extends ServiceImpl<UserMapper, User> {
 //        Page<FriendSearchResp> pages = new Page<>(page,pageSize);
 //        LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<>();
 //        wrapper.like(User::getUsername, keyword)
-//                .select(User::getUsername, User::getAvatar, User::getExep, User::getCreateTime, User::getStatus)
+//                .select(User::getUsername, User::getAvatar, User::getExp, User::getCreateTime, User::getStatus)
 //                .orderByDesc(User::getCreateTime);
 //        return this.page(pages,wrapper);
 //    }

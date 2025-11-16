@@ -14,7 +14,7 @@
 		<result column="create_time" property="joinGroupTime"/>
 	</resultMap>
 	<select id="getGroupMember" resultMap="GroupMemberSimpleMap">
-		select gm.uid, u.username, u.avatar, gm. role, u. status, u.exep, gm.create_time from group_member gm join users u on gm.uid = u.id where gm.group_id = #{roomId}
+		select gm.uid, u.username, u.avatar, gm. role, u. status, u.exp, gm.create_time from group_member gm join users u on gm.uid = u.id where gm.group_id = #{roomId}
 		order by gm. role, u.status desc
 	</select>
 
@@ -59,7 +59,7 @@
 		FROM
 		room_group
 		WHERE
-		name LIKE CONCAT('%', #{keyword}, '%')
+		name LIKE CONCAT('%', #{keyword}, '%') and delete_status = 0
 		ORDER BY
 		create_time DESC
 	</select>

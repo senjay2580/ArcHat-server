@@ -16,7 +16,7 @@ public class UserProfileResp {
     private Long uid;
     private String username;
     private String avatar;
-    private Integer exep;
+    private Integer exp;
     private LocalDateTime createTime;
     private String token;
 }

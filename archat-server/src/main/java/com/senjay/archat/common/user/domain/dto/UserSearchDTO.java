@@ -14,8 +14,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class UserSearchDTO {
     private String keyword;
-    private Integer exepMin;
-    private Integer exepMax;
+    private Integer expMin;
+    private Integer expMax;
     @NotNull
     private Integer page;
     @NotNull
